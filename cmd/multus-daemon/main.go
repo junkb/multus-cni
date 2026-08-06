@@ -151,6 +151,9 @@ func main() {
 		}
 	}
 
+	// run until signalled (the WaitGroup only waits for the
+	// ConfigManager's cleanup)
+	<-ctx.Done()
 	wg.Wait()
 	logging.Verbosef("multus daemon is exited")
 }
